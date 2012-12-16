@@ -1,0 +1,4 @@
+#! /usr/bin/python3
+from Tariq.TariqServer import main
+main()
+
