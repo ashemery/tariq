@@ -1,12 +1,12 @@
-# A Hybrid Port Knocking System.
+# A Hybrid Port Knocking System
 
-### Tariq Overview:
+### Overview:
 Tariq is a new hybrid port-knocking technique, that uses Cryptography, Steganography, and Mutual Authentication to develop another security layer in front of any service that needs to be accessed from different locations around the globe. Tariq was developed using python and scapy to fulfil my Ph.D. Research. We had to use a new methodology that can communicate in an unseen manner, making TCP Replay Attacks hard to be issued against Tariq. We also wanted the implementation to listen to no ports, or bind itself to no socket for packets exchange, so that Tariq won't be exposed himself to a remote exploit. Tariq relies completely on Packet Crafting, as all packets sent and received are crafted to suite our needs.
-
+---
 ### What does Tariq mean ?
 It means knocking, hammering or coming at night :)
 الطَّرْقُ: الضَّرْبُ، أو بالمِطْرَقَةِ، بالكسر، والصَّكُّ، -- القاموس المحيط
-
+---
 ### Why Is Tariq Secure?
 - Tariq Server's code is very simple, and is written completely using scapy (python),
 - The code is concise enough to be easily audited,
@@ -14,7 +14,7 @@ It means knocking, hammering or coming at night :)
 - Tariq does not listen on any TCP/UDP port, which means no sockets is used. Tariq uses scapy's capabilities to sniff the incoming traffic and uses Packet Crafting techniques to reply back to an legitimate client,
 - The communication protocol is a simple secure encryption scheme that uses GnuPG keys with Steganography constructions. An observer watching packets is not given any indication that the SYN packet transmitted by 'Tariq' is a port knocking request, but even if they knew, there would be no way for them to determine which port was requested to open, or what task was requested to be done as all of that is inserted into a png picture using Steganography and then encrypted using GnuPG keys,
 Replaying the knock request later does them no good, and in fact does not provide any information that might be useful in determining the contents of future request. The mechanism works using a single packet for the mutual authentication.
-
+---
 ### Why Is Tariq Needed?
 Any host connected to the Internet needs to be secured against unauthorized intrusion and other attacks. Unfortunately, the only secure system is one that is completely inaccessible, but, to be useful, many hosts need to make services accessible to other hosts. While some services need to be accessible to anyone from any location, others should only be accessed by a limited number of people, or from a limited set of locations. The most obvious way to limit access is to require users to authenticate themselves before granting them access. This is were Tariq comes in place. Tariq can be used to open ports on a firewall to authorized users, and blocking all other traffic users. Tariq can also be used to execute a remotely requested task, and finally for sure Tariq can close the open ports that have been opened by a previous TariqClient? request. Tariq runs as a port authentication service on the iptables firewall, which validates the identity of remote users and modifies firewall rules (plus other tasks) according to a mutual authentication process done between Tariq Server and a Tariq client. Tariq could be used for a number of purposes, including:
 - Making services invisible to port scans,
@@ -22,14 +22,14 @@ Any host connected to the Internet needs to be secured against unauthorized intr
 - Acting as a stop-gap security measure for services with known unpatched vulnerabilities,
 - Providing a wrapper for a legacy or proprietary services with insufficient integrated security.
 - Howto Install Tariq?
-
+---
 ### Requirements
 - Python >= 2.6
 - python-imaging - Python Imaging Library (PIL)
 - GnuGP
 - Scapy
 - A recent Linux kernel with iptables (eg. 2.6)
-
+---
 ### Installation and Configuration
 - Configuring the Client
 First we need to preparing GnuPG to be used, so you need to create a directory for gnupg and generate a pair of keys using the following commands: mkdir /etc/tariq/.client-gpg chmod 600 /etc/tariq/.client-gpg gpg --homedir /etc/tariq/.client-gpg –gen-key
