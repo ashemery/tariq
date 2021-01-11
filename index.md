@@ -1,12 +1,13 @@
 # A Hybrid Port Knocking System
 The network security has become a primary concern on the Internet in order to provide protected communication between hosts/nodes in a hostile environment. In order to protect network resources, each service provider pose a number of nontrivial challenges to security design and set its own policies for accessing resources on the network. These challenges make a case for building security solutions that achieve both broad protection and desirable network performance in terms of minimum data overhead and delay. It is so crucial to have computationally cheap and simple defense mechanisms that allow early protection against all types of attacks. In particular, it becomes very common and useful to have multiple progressively stronger layers of security, rather than attempting to have a single perfect security layer.
 
-### Port-Knocking History:
+---
+### Port-Knocking History
 In computer networking, Port Knocking is a method of externally opening ports on a firewall by generating a connection attempt on a set of pre-specified closed ports. Once a correct sequence of connection attempts is received, the firewall rules are dynamically modified to allow the host which sent the connection attempts to connect over specific port(s) [1].
 
 The problem today in the world full of security threats, it should be assumed that all traffic is monitored by an unknown third party as it travels across a network. Doggedly adhering to this viewpoint provides us with the fact that our knock sequence can be passively observed by an eavesdropping person in the middle of our connection and just replay the knock sequence to get the same response from the server (open port or perform a task). This problem is called “TCP Replay Attack”. So we had to find a solution were the knock sequence is not re-playable.
 
-
+---
 ### Tariq Overview
 Tariq is a new hybrid port-knocking technique, that uses Cryptography, Steganography, and Mutual Authentication to develop another security layer in front of any service that needs to be accessed from different locations around the globe. Tariq was developed using python and scapy to fulfil my Ph.D. Research. We had to use a new methodology that can communicate in an unseen manner, making TCP Replay Attacks hard to be issued against Tariq. We also wanted the implementation to listen to no ports, or bind itself to no socket for packets exchange, so that Tariq won't be exposed himself to a remote exploit. Tariq relies completely on Packet Crafting, as all packets sent and received are crafted to suite our needs.
 
@@ -26,7 +27,7 @@ It means knocking, hammering or coming at night :)
 - Tariq needs root privileges to adjust iptables rules, and perform remote tasks,
 - Tariq does not listen on any TCP/UDP port, which means no sockets is used. Tariq uses scapy's capabilities to sniff the incoming traffic and uses Packet Crafting techniques to reply back to an legitimate client,
 - The communication protocol is a simple secure encryption scheme that uses GnuPG keys with Steganography constructions. An observer watching packets is not given any indication that the SYN packet transmitted by 'Tariq' is a port knocking request, but even if they knew, there would be no way for them to determine which port was requested to open, or what task was requested to be done as all of that is inserted into a png picture using Steganography and then encrypted using GnuPG keys,
-Replaying the knock request later does them no good, and in fact does not provide any information that might be useful in determining the contents of future request. The mechanism works using a single packet for the mutual authentication.
+- Replaying the knock request later does them no good, and in fact does not provide any information that might be useful in determining the contents of future request. The mechanism works using a single packet for the mutual authentication.
 
 ---
 ### Why Is Tariq Needed?
@@ -36,13 +37,16 @@ Any host connected to the Internet needs to be secured against unauthorized intr
 - Acting as a stop-gap security measure for services with known unpatched vulnerabilities,
 - Providing a wrapper for a legacy or proprietary services with insufficient integrated security.
 
+---
 ### Howto Install Tariq
 - Check the installation page [here](installation)
 
-Useful References:
+---
+### Useful References:
 - [1](http://en.wikipedia.org/wiki/Port_knocking/) Port Knocking
 - [2](http://code.google.com/p/steganogra-py/) Steganography in Python 
 
+---
 ### Contact Me
 - Twitter [here](https://twitter.com/binaryz0ne)
 - Email: "Ali Hadi" <dfir [at] protonmail [dot] com>
