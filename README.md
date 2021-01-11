@@ -1,0 +1,3 @@
+# A Hybrid Port Knocking System
+- This project was done to fulfill the requirements of my Ph.D. Thesis...
+- Please check the details of the project [here](http://ashemery.github.io/tariq/)
