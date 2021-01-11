@@ -1,6 +1,5 @@
 
 # Howto Install Tariq?
----
 
 ### Requirements
 - Python >= 2.6
